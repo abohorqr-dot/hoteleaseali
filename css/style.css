@@ -1,134 +1,175 @@
 /* ====== HotelEaseAli – Tema Teal + Dorado ====== */
-:root{
-  --teal-900:#0c3a3f;   /* verde petróleo oscuro */
-  --teal-800:#0f4a4e;
-  --teal-700:#13595e;
+:root {
+    --teal-900: #0c3a3f;
+    /* verde petróleo oscuro */
+    --teal-800: #0f4a4e;
+    --teal-700: #13595e;
 
-  --gold-500:#c79a00;   /* dorado */
-  --gold-600:#b88900;
+    --gold-500: #c79a00;
+    /* dorado */
+    --gold-600: #b88900;
 
-  --gray-050:#f5f7fb;   /* grises suaves */
-  --gray-100:#ecf0f1;
-  --gray-300:#c7d1d5;
+    --gray-050: #f5f7fb;
+    /* grises suaves */
+    --gray-100: #ecf0f1;
+    --gray-300: #c7d1d5;
 
-  --text:#0f172a;
-  --white:#ffffff;
+    --text: #0f172a;
+    --white: #ffffff;
 }
 
 /* Reset básico */
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family: Arial, Helvetica, sans-serif;
-  color:var(--text);
-  background:var(--gray-050);
-  line-height:1.6;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--gray-050);
+    line-height: 1.6;
 }
 
 /* ===== Header / Navbar ===== */
-header{
-  background:var(--teal-900);
-  color:var(--white);
-  padding:22px 24px;
-  text-align:center;
+header {
+    background: var(--teal-900);
+    color: var(--white);
+    padding: 22px 24px;
+    text-align: center;
 }
-header h1{
-  font-size:40px;
-  letter-spacing:.5px;
-  margin-bottom:6px;
+
+header h1 {
+    font-size: 40px;
+    letter-spacing: .5px;
+    margin-bottom: 6px;
 }
-header nav a{
-  color:var(--white);
-  text-decoration:none;
-  margin:0 12px;
-  font-weight:600;
-  opacity:.9;
+
+header nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: 600;
+    opacity: .9;
 }
-header nav a:hover{opacity:1;text-decoration:underline}
+
+header nav a:hover {
+    opacity: 1;
+    text-decoration: underline
+}
 
 /* ===== Hero ===== */
-#hero{
-  padding:64px 24px;
-  text-align:center;
-  background: linear-gradient(180deg, var(--gray-100) 0%, var(--gray-050) 100%);
+#hero {
+    padding: 64px 24px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--gray-100) 0%, var(--gray-050) 100%);
 }
-#hero h2{
-  font-size:32px;
-  margin-bottom:10px;
+
+#hero h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
 }
-#hero p{max-width:760px;margin:0 auto 14px}
+
+#hero p {
+    max-width: 760px;
+    margin: 0 auto 14px
+}
 
 /* Botón / enlace de reserva (usar comillas simples en selector) */
-.btn, #hero a[href*='reserva']{
-  display:inline-block;
-  margin-top:10px;
-  padding:12px 18px;
-  border-radius:10px;
-  background:var(--gold-500);
-  color:var(--white);
-  font-weight:700;
-  text-decoration:none;
-  border:2px solid transparent;
+.btn,
+#hero a[href*='reserva'] {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: var(--gold-500);
+    color: var(--white);
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid transparent;
 }
-.btn:hover, #hero a[href*='reserva']:hover{
-  background:var(--gold-600);
+
+.btn:hover,
+#hero a[href*='reserva']:hover {
+    background: var(--gold-600);
 }
 
 /* ===== Secciones ===== */
-section{padding:28px 24px;max-width:980px;margin:0 auto}
-#servicios h3,#reservas h3,#contacto h3{
-  color:var(--teal-900);
-  margin-bottom:10px;
+section {
+    padding: 28px 24px;
+    max-width: 980px;
+    margin: 0 auto
 }
-ul{padding-left:22px;margin-top:8px}
+
+#servicios h3,
+#reservas h3,
+#contacto h3 {
+    color: var(--teal-900);
+    margin-bottom: 10px;
+}
+
+ul {
+    padding-left: 22px;
+    margin-top: 8px
+}
 
 /* ===== Panel con corte diagonal (gradiente explícito por compatibilidad) ===== */
-.panel{
-  /* dos colores con cortes definidos */
-  background: linear-gradient(
-    135deg,
-    var(--teal-900) 0%,
-    var(--teal-900) 48%,
-    var(--gray-300) 48%,
-    var(--gray-300) 100%
-  );
-  border-radius:18px;
-  padding:28px;
-  color:var(--white);
+.panel {
+    /* dos colores con cortes definidos */
+    background: linear-gradient(135deg,
+            var(--teal-900) 0%,
+            var(--teal-900) 48%,
+            var(--gray-300) 48%,
+            var(--gray-300) 100%);
+    border-radius: 18px;
+    padding: 28px;
+    color: var(--white);
 }
 
 /* ===== Footer ===== */
-footer{
-  text-align:center;
-  padding:18px 12px;
-  background:var(--gray-100);
-  margin-top:28px;
-  color:#334155;
+footer {
+    text-align: center;
+    padding: 18px 12px;
+    background: var(--gray-100);
+    margin-top: 28px;
+    color: #334155;
 }
 
 /* ===== Formularios ===== */
-input,button{font:inherit}
-input{
-  width:100%;
-  padding:12px 14px;
-  border-radius:10px;
-  border:1px solid var(--gray-300);
-  outline:none;
+input,
+button {
+    font: inherit
 }
-input:focus{
-  border-color:var(--teal-700);
-  box-shadow:0 0 0 3px rgba(19,89,94,.15);
+
+input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-300);
+    outline: none;
 }
-button{
-  width:100%;
-  padding:12px 16px;
-  border-radius:12px;
-  background:var(--gold-500);
-  color:var(--white);
-  border:none;
-  cursor:pointer;
-  font-weight:700;
+
+input:focus {
+    border-color: var(--teal-700);
+    box-shadow: 0 0 0 3px rgba(19, 89, 94, .15);
 }
-button:hover{background:var(--gold-600)}
+
+button {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--gold-500);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+button:hover {
+    background: var(--gold-600)
+}
+
 
 
 
