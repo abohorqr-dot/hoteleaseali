@@ -1,17 +1,17 @@
 /* ====== HotelEaseAli – Tema Teal + Dorado ====== */
 :root{
-  --teal-900:#0c3a3f;   /* fondo principal (verde petróleo) */
-  --teal-800:#0f4a4e;   /* variantes oscuras */
+  --teal-900:#0c3a3f;   /* verde petróleo oscuro */
+  --teal-800:#0f4a4e;
   --teal-700:#13595e;
 
-  --gold-500:#c79a00;   /* acento dorado */
+  --gold-500:#c79a00;   /* dorado */
   --gold-600:#b88900;
 
-  --gray-050:#f5f7fb;   /* fondos claros */
+  --gray-050:#f5f7fb;   /* grises suaves */
   --gray-100:#ecf0f1;
   --gray-300:#c7d1d5;
 
-  --text:#0f172a;       /* texto oscuro */
+  --text:#0f172a;
   --white:#ffffff;
 }
 
@@ -49,14 +49,16 @@ header nav a:hover{opacity:1;text-decoration:underline}
 #hero{
   padding:64px 24px;
   text-align:center;
-  background: linear-gradient(180deg, var(--gray-100), var(--gray-050));
+  background: linear-gradient(180deg, var(--gray-100) 0%, var(--gray-050) 100%);
 }
 #hero h2{
   font-size:32px;
   margin-bottom:10px;
 }
 #hero p{max-width:760px;margin:0 auto 14px}
-.btn, #hero a[href*="reserva"]{
+
+/* Botón / enlace de reserva (usar comillas simples en selector) */
+.btn, #hero a[href*='reserva']{
   display:inline-block;
   margin-top:10px;
   padding:12px 18px;
@@ -67,7 +69,7 @@ header nav a:hover{opacity:1;text-decoration:underline}
   text-decoration:none;
   border:2px solid transparent;
 }
-.btn:hover, #hero a[href*="reserva"]:hover{
+.btn:hover, #hero a[href*='reserva']:hover{
   background:var(--gold-600);
 }
 
@@ -79,9 +81,16 @@ section{padding:28px 24px;max-width:980px;margin:0 auto}
 }
 ul{padding-left:22px;margin-top:8px}
 
-/* ===== Tarjeta/Panel (por si luego haces login/hero con imagen) ===== */
+/* ===== Panel con corte diagonal (gradiente explícito por compatibilidad) ===== */
 .panel{
-  background:linear-gradient(135deg, var(--teal-900) 0 48%, var(--gray-300) 48% 100%);
+  /* dos colores con cortes definidos */
+  background: linear-gradient(
+    135deg,
+    var(--teal-900) 0%,
+    var(--teal-900) 48%,
+    var(--gray-300) 48%,
+    var(--gray-300) 100%
+  );
   border-radius:18px;
   padding:28px;
   color:var(--white);
@@ -96,10 +105,8 @@ footer{
   color:#334155;
 }
 
-/* ===== Formularios (para futuras páginas tipo login) ===== */
-input,button{
-  font:inherit;
-}
+/* ===== Formularios ===== */
+input,button{font:inherit}
 input{
   width:100%;
   padding:12px 14px;
@@ -122,4 +129,6 @@ button{
   font-weight:700;
 }
 button:hover{background:var(--gold-600)}
+
+
 
