@@ -1,56 +1,75 @@
-<!DOCTYPE html>
+<!-- index.html -->
+<!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HotelEaseAli – Reservas & Servicios</title>
-    <link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hoteleaseali</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Plataforma de gestión hotelera: reservas, clientes, pagos y más." />
 </head>
-
 <body>
-    <header>
-        <h1>HotelEaseAli</h1>
-        <nav>
-            <a href="#reservas">Reservas</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+  <header class="container">
+    <nav class="nav">
+      <a class="logo" href="/">Hoteleaseali</a>
+      <ul>
+        <li><a href="#modulos">Módulos</a></li>
+        <li><a href="#screens">Screenshots</a></li>
+        <li><a href="docs/index.html">Docs</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <h1>Gestión hotelera simple y potente</h1>
+      <p>Reservas, clientes, pagos y reportes en un solo lugar.</p>
+      <a class="btn" href="#demo">Ver demo</a>
+    </section>
+  </header>
 
-    <main>
-        <section id="hero">
-            <h2>Tu estadía 5★ empieza aquí</h2>
-            <p>Reserva habitaciones y accede a spa, gimnasio y restaurante desde un solo lugar.</p>
-            <a class="btn" href="#reservas">Hacer una reserva</a>
-        </section>
+  <main class="container">
+    <section id="modulos" class="grid">
+      <article>
+        <h3>Inicio de sesión</h3>
+        <p>Autenticación segura y roles.</p>
+      </article>
+      <article>
+        <h3>Registro</h3>
+        <p>Alta de usuarios con validaciones.</p>
+      </article>
+      <article>
+        <h3>Pagos</h3>
+        <p>Integración con pasarelas y comprobantes.</p>
+      </article>
+      <article>
+        <h3>Reservas</h3>
+        <p>Creación/edición, disponibilidad y calendario.</p>
+      </article>
+      <article>
+        <h3>Clientes</h3>
+        <p>Perfil, historial y segmentación.</p>
+      </article>
+      <article>
+        <h3>Gestión & Cancelaciones</h3>
+        <p>Estados, reembolsos y auditoría.</p>
+      </article>
+    </section>
 
-        <section id="servicios">
-            <h3>Servicios</h3>
-            <ul>
-                <li>Reserva de habitaciones</li>
-                <li>Spa & Bienestar</li>
-                <li>Gimnasio</li>
-                <li>Restaurante</li>
-            </ul>
-        </section>
+    <section id="screens">
+      <h2>Screenshots</h2>
+      <p>Sube aquí capturas de tus módulos (PNG/JPG optimizados).</p>
+      <div class="grid images">
+        <img src="img/login.png" alt="Login" />
+        <img src="img/reservas.png" alt="Reservas" />
+      </div>
+    </section>
 
-        <section id="reservas">
-            <h3>Reservas</h3>
-            <p>Pronto podrás gestionar tus reservas desde aquí.</p>
-        </section>
+    <section id="demo">
+      <h2>Demo</h2>
+      <p>Enlace a tu deploy (si tienes frontend separado) o GIFs cortos mostrando flujos clave.</p>
+    </section>
+  </main>
 
-        <section id="contacto">
-            <h3>Contacto</h3>
-            <p>Email: contacto@hoteleaseali.com</p>
-        </section>
-    </main>
-
-    <footer>
-        <small>© 2025 HotelEaseAli</small>
-    </footer>
-
-    <script src="js/app.js"></script>
+  <footer class="container">
+    <small>© 2025 Hoteleaseali</small>
+  </footer>
 </body>
-
 </html>
