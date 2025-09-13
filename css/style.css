@@ -339,3 +339,22 @@ footer {
     color: #3b4a5a;
     text-align: center
 }
+/* FAQ simple */
+.faq details {
+    background: #fff;
+    border: 1px solid var(--gray-300);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 8px 0;
+    box-shadow: var(--shadow)
+}
+
+.faq summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--teal-800)
+}
+
+.faq p {
+    margin-top: 8px
+}
