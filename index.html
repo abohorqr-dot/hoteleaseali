@@ -4,100 +4,143 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Hoteleaseali</title>
-
-    <!-- ENLACE A TU CSS (MISMA CARPETA) -->
-    <link rel="stylesheet" href="css/style.css" />
-
-    <!-- (opcional) ícono -->
+    <title>HotelEaseAli — Gestión Hotelera Simple y Potente</title>
     <link rel="icon" href="img/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-
-    <!-- HEADER / NAVBAR (usa tus reglas: header, header nav a) -->
+    <!-- Header -->
     <header>
-        <nav>
-            <a href="#">
-                <img src="img/logo.png" alt="Hoteleaseali"
-                    style="height:40px; vertical-align:middle; margin-right:8px;">
+        <div class="container header-inner">
+            <a class="brand" href="./">
+                <img src="img/logo.png" alt="Hoteleaseali" />
+                Hoteleaseali
             </a>
-            <a href="#modulos">Módulos</a>
-            <a href="#screens">Screenshots</a>
-            <a href="#docs">Docs</a>
-        </nav>
-        <h1>Hoteleaseali</h1>
+            <nav class="nav">
+                <a href="#modulos">Módulos</a>
+                <a href="#screenshots">Screenshots</a>
+                <a href="#docs">Docs</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- HERO (usa #hero de tu CSS) -->
-    <section id="hero">
-        <h2>Gestión hotelera simple y potente</h2>
-        <p>Reservas, clientes, pagos y reportes en un solo lugar.</p>
-        <a class="btn" href="#demo">Ver demo</a>
-        <a class="btn" href="docs/login.html">Iniciar sesión</a>
-        <a class="btn ghost" href="docs/registro.html">Registrarme</a>
+    <!-- Hero -->
+    <section id="hero" class="hero">
+        <div class="container center">
+            <h1>Gestión Hotelera Simple y Potente</h1>
+            <p class="lead">Reservas, clientes, pagos y reportes en un solo lugar.</p>
 
-    </section>
+            <div class="hero-badges">
+                <span class="badge">Multi-hotel</span>
+                <span class="badge">Roles & permisos</span>
+                <span class="badge">Reportes en tiempo real</span>
+            </div>
 
-    <!-- SECCIONES (usa section, h3, ul de tu CSS) -->
-<section id="modulos">
-    <h3>Módulos</h3>
-    <ul>
-        <li><a class="module-link" href="docs/login.html">Inicio de sesión</a> — Autenticación segura y roles.</li>
-        <li><a class="module-link" href="docs/registro.html">Registro</a> — Validaciones y alta de usuarios.</li>
-
-        <!-- Estos puedes dejarlos con ancla mientras no tengas página aparte -->
-        <li><a class="module-link" href="#pagos">Pagos</a> — Pasarelas e impresión de comprobantes.</li>
-        <li><a class="module-link" href="#reservas">Reservas</a> — Disponibilidad, calendario y edición.</li>
-        <li><a class="module-link" href="#clientes">Clientes</a> — Historial y segmentación.</li>
-        <li><a class="module-link" href="#gestion">Gestión & Cancelaciones</a> — Estados y reembolsos.</li>
-        <li><a class="module-link" href="docs/panel.html">Panel</a> — Acceso al área privada.</li>
-
-    </ul>
-</section>
-
-<section id="login">
-    <h2>Inicio de sesión</h2>
-    <p>Descripción, capturas, GIF del flujo…</p>
-</section>
-<section id="registro">
-    <h2>Registro</h2>
-    <p>…</p>
-</section>
-<section id="pagos">
-    <h2>Pagos</h2>
-    <p>…</p>
-</section>
-<section id="reservas">
-    <h2>Reservas</h2>
-    <p>…</p>
-</section>
-<section id="clientes">
-    <h2>Clientes</h2>
-    <p>…</p>
-</section>
-<section id="gestion">
-    <h2>Gestión & Cancelaciones</h2>
-    <p>…</p>
-</section>
-
-    <section id="screens">
-        <h3>Screenshots</h3>
-        <div class="panel">
-            <p>Coloca aquí imágenes de tus pantallas (login, reservas, pagos…)</p>
+            <div class="hero-actions">
+                <a class="btn" href="docs/login.html">Iniciar sesión</a>
+                <a class="btn ghost" href="docs/registro.html">Registrarme</a>
+            </div>
         </div>
     </section>
 
-    <section id="docs">
-        <h3>Docs</h3>
-        <p>Documentación de API, arquitectura y flujos.</p>
+    <!-- Features resumen -->
+    <section class="container features">
+        <article class="feature-card">
+            <h3>Reservas inteligentes</h3>
+            <p>Calendario por tipo de habitación, bloqueos por mantenimiento y control de <em>overbooking</em>.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Pagos integrados</h3>
+            <p>Pasarelas A/B/C, comprobantes en PDF y conciliación con un clic.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Clientes & CRM</h3>
+            <p>Historial, preferencias y segmentación para campañas que convierten.</p>
+        </article>
+    </section>
+
+    <!-- Módulos (enlaces reales) -->
+    <section id="modulos" class="container">
+        <h2>Módulos</h2>
+        <ul class="modules-list">
+            <li><a class="module-link" href="docs/login.html"><strong>Inicio de sesión</strong></a><span> —
+                    Autenticación segura y roles.</span></li>
+            <li><a class="module-link" href="docs/registro.html"><strong>Registro</strong></a><span> — Validaciones y
+                    alta de usuarios.</span></li>
+            <li><a class="module-link" href="docs/pagos.html"><strong>Pagos</strong></a><span> — Pasarelas e impresión
+                    de comprobantes.</span></li>
+            <li><a class="module-link" href="docs/reservas.html"><strong>Reservas</strong></a><span> — Disponibilidad,
+                    calendario y edición.</span></li>
+            <li><a class="module-link" href="docs/clientes.html"><strong>Clientes</strong></a><span> — Historial y
+                    segmentación.</span></li>
+            <li><a class="module-link" href="docs/gestion.html"><strong>Gestión & Cancelaciones</strong></a><span> —
+                    Estados y reembolsos.</span></li>
+            <li><a class="module-link" href="docs/panel.html"><strong>Panel</strong></a><span> — Acceso al área
+                    privada.</span></li>
+        </ul>
+    </section>
+
+    <!-- Cómo funciona (3 pasos) -->
+    <section class="container">
+        <h2>¿Cómo funciona?</h2>
+        <ol class="stepper">
+            <li>
+                <span class="step">1</span>
+                <div><strong>Crea tu cuenta</strong><br><span class="muted">Regístrate y configura tu hotel.</span>
+                </div>
+            </li>
+            <li>
+                <span class="step">2</span>
+                <div><strong>Activa módulos</strong><br><span class="muted">Pagos, reservas, clientes y más.</span>
+                </div>
+            </li>
+            <li>
+                <span class="step">3</span>
+                <div><strong>Empieza a operar</strong><br><span class="muted">Reportes en tiempo real.</span></div>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Integraciones / Seguridad -->
+    <section class="container">
+        <div class="panel">
+            <h2 style="margin-bottom:8px">Integraciones & Seguridad</h2>
+            <p class="lead">OAuth con Firebase, reglas por rol y almacenamiento seguro. Integración con pasarelas de
+                pago y generación de comprobantes.</p>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screenshots" class="container">
+        <h2>Screenshots</h2>
+        <div class="gallery">
+            <!-- Reemplaza las imágenes por tus capturas reales -->
+            <img src="img/screen-login.png" alt="Pantalla de login (demo)">
+            <img src="img/screen-reservas.png" alt="Módulo de reservas (demo)">
+            <img src="img/screen-pagos.png" alt="Módulo de pagos (demo)">
+        </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="cta-band">
+        <div class="container center">
+            <h2>¿Listo para empezar?</h2>
+            <p class="lead">Crea tu cuenta y prueba el flujo completo.</p>
+            <div class="hero-actions">
+                <a class="btn" href="docs/registro.html">Crear cuenta</a>
+                <a class="btn ghost" href="docs/login.html">Ya tengo cuenta</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="docs" class="container">
+        <h2>Docs</h2>
+        <p class="lead">Guías de API, arquitectura y flujos próximamente.</p>
     </section>
 
     <footer>
         <small>© 2025 Hoteleaseali</small>
     </footer>
-<script type="module" src="docs/firebase-init.js"></script>
-
 </body>
 
 </html>
