@@ -14,7 +14,7 @@
         <div class="container header-inner">
             <a class="brand" href="../index.html"><img src="../img/logo.png" alt="">Hoteleaseali</a>
             <nav class="nav">
-                <a href="./login.html">Login</a>
+                <a href="./login.html">Iniciar sesión</a>
                 <a href="./registro.html">Registro</a>
                 <a href="./panel.html">Panel</a>
             </nav>
@@ -22,27 +22,72 @@
     </header>
 
     <main class="container" style="padding:32px 0">
-        <div class="card stack">
+        <!-- Hero card -->
+        <div class="card stack" style="margin-bottom:16px">
             <h1>Pagos</h1>
             <p class="lead">Integración con pasarelas y emisión de comprobantes.</p>
-            <ul>
+
+            <!-- métodos aceptados -->
+            <div class="hero-badges" style="justify-content:flex-start;margin-top:4px">
+                <span class="badge">Tarjeta</span>
+                <span class="badge">QR</span>
+                <span class="badge">Transferencia</span>
+                <span class="badge">Efectivo</span>
+            </div>
+
+            <ul style="margin-top:10px">
                 <li>Pasarela A/B/C (tarjeta, QR, transferencia).</li>
                 <li>Generación de recibos y comprobantes (PDF).</li>
                 <li>Reembolsos y conciliación.</li>
                 <li>Reporte de ingresos por período.</li>
             </ul>
+
+            <div class="hero-actions" style="justify-content:flex-start">
+                <a class="btn" href="./login.html">Probar ahora</a>
+                <a class="btn ghost" href="../index.html#modulos">Volver a módulos</a>
+            </div>
         </div>
+
+        <!-- Highlights -->
+        <section class="features" style="margin-top:0">
+            <article class="feature-card">
+                <h3>Comprobantes PDF</h3>
+                <p>Emite recibos/facturas con tus datos y logo, listos para descargar o enviar por correo.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Reembolsos guiados</h3>
+                <p>Aplica políticas y registra motivos; el sistema calcula montos y deja bitácora.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Conciliación</h3>
+                <p>Resumen por método y pasarela; exporta CSV para contabilidad en un clic.</p>
+            </article>
+        </section>
+
+        <!-- FAQ -->
+        <section style="margin-top:16px">
+            <h2>Preguntas frecuentes</h2>
+            <div class="faq">
+                <details>
+                    <summary>¿Qué pasarelas puedo usar?</summary>
+                    <p>Se pueden conectar proveedores comunes (tarjeta, QR y transferencia). La configuración es por
+                        hotel.</p>
+                </details>
+                <details>
+                    <summary>¿Puedo emitir reembolsos parciales?</summary>
+                    <p>Sí. Define el porcentaje/importe, el sistema calcula la penalización según tus reglas.</p>
+                </details>
+                <details>
+                    <summary>¿Cómo obtengo mis reportes?</summary>
+                    <p>Filtra por fechas y método; descarga en CSV o genera un PDF de resumen.</p>
+                </details>
+            </div>
+        </section>
     </main>
 
     <footer><small>© 2025 Hoteleaseali</small></footer>
+
     <script type="module" src="./firebase-init.js"></script>
-    <!-- (Opcional) proteger si quieres solo usuarios logueados
-<script type="module">
-import {auth} from "./firebase-init.js";
-import {onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-onAuthStateChanged(auth, u => { if(!u) location.href="./login.html"; });
-</script>
--->
 </body>
 
 </html>
