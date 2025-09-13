@@ -1,10 +1,9 @@
-// docs/firebase-init.js  — Inicializa Firebase en el navegador (sin bundler)
+// Inicializa Firebase (CDN módulos v10)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAnalytics }   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-import { getAuth }        from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAnjcmz2VPiTDh4YNROD6gjc5_HBuS2jWQ",
+  apiKey: "AIzaSyAnjcmz2VPiTDh4YNR0D6gjc5_HBuS2jWQ",
   authDomain: "hoteleaseali.firebaseapp.com",
   projectId: "hoteleaseali",
   storageBucket: "hoteleaseali.firebasestorage.app",
@@ -13,15 +12,6 @@ const firebaseConfig = {
   measurementId: "G-84KL2MHP1J"
 };
 
-// Inicializa
-export const app  = initializeApp(firebaseConfig);
-
-// Analytics es opcional (en localhost puede no iniciar y no pasa nada)
-export let analytics = null;
-try { analytics = getAnalytics(app); } catch (e) { /* ignorar en local */ }
-
-// Auth lo usaremos luego
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
-// Comprobación
-console.log("✅ Firebase listo:", app.name);
+auth.languageCode = "es";
