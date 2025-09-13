@@ -1,126 +1,99 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Hoteleaseali · Registro</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" href="../img/logo.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro · Test</title>
+  <style>
+    body{font-family:system-ui,Arial;background:#0b1e23;color:#eaffff;margin:0;padding:24px}
+    .box{max-width:480px;margin:0 auto;background:#0e2a2f;padding:20px;border-radius:12px}
+    label{display:block;margin:10px 0 6px}
+    input{width:100%;padding:12px;border-radius:10px;border:1px solid #0f4950;background:#092025;color:#eaffff}
+    button{width:100%;padding:12px;border:0;border-radius:10px;margin-top:14px;font-weight:700;cursor:pointer;background:#14b8a6;color:#001a1e}
+    .msg{margin-top:12px;padding:10px;border-radius:10px;background:#052229;color:#92f0ff;display:none}
+    .err{background:#3a0b0b;color:#ffd6d6}
+  </style>
 </head>
 <body>
-<header>
-  <div class="container header-inner">
-    <a class="brand" href="../index.html"><img src="../img/logo.png" alt="">Hoteleaseali</a>
-    <nav class="nav"><a href="./login.html">Iniciar sesión</a><a href="./panel.html">Panel</a></nav>
-  </div>
-</header>
+  <div class="box">
+    <h2>Crear cuenta (TEST)</h2>
 
-<main class="container" style="padding:32px 0">
-  <div class="card" style="max-width:720px;margin:auto">
-    <h1>Crear cuenta</h1>
-    <p class="lead">Regístrate con tu correo electrónico.</p>
+    <div id="info" class="msg"></div>
+    <div id="error" class="msg err"></div>
 
-    <!-- Mensajes -->
-    <div id="status" style="display:none;margin:8px 0;padding:10px;border-radius:10px;background:#fffbe6;border:1px solid #f3d08b;color:#7a5900"></div>
+    <form id="regForm">
+      <label for="name">Nombre</label>
+      <input id="name" type="text" required placeholder="Tu nombre" />
 
-    <!-- 👇 evita recarga incluso si el JS falla -->
-    <form id="register-form" action="javascript:void(0)" novalidate class="form-row" style="margin-top:12px">
-      <label>Nombre (opcional)
-        <input name="name" type="text" placeholder="Tu nombre">
-      </label>
-      <label>Correo
-        <input name="email" type="email" placeholder="usuario@hotel.com" required>
-      </label>
-      <label>Contraseña
-        <input name="password" type="password" minlength="6" placeholder="Mínimo 6 caracteres" required>
-      </label>
-      <label>Confirmar contraseña
-        <input name="password2" type="password" minlength="6" placeholder="Repite la contraseña" required>
-      </label>
+      <label for="email">Correo</label>
+      <input id="email" type="email" required placeholder="correo@dominio.com" />
 
-      <label style="display:flex;gap:8px;align-items:flex-start;margin-top:6px">
-        <input name="terms" type="checkbox" required>
-        <span>Acepto los términos y condiciones</span>
-      </label>
+      <label for="password">Contraseña</label>
+      <input id="password" type="password" required minlength="6" placeholder="mínimo 6 caracteres" />
 
-      <button id="submit" class="btn" type="submit" style="margin-top:8px">Registrarme</button>
-      <p style="margin-top:10px">¿Ya tienes cuenta? <a class="module-link" href="./login.html">Inicia sesión</a></p>
+      <label for="confirm">Confirmar contraseña</label>
+      <input id="confirm" type="password" required minlength="6" placeholder="repite la contraseña" />
+
+      <button id="btnReg" type="submit">Registrarme</button>
     </form>
   </div>
-</main>
 
-<footer><small>© 2025 Hoteleaseali</small></footer>
+  <!-- Firebase (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="./firebase-init.js"></script>
 
-<!-- 1) Carga Firebase -->
-<script type="module" src="./firebase-init.js?v=8"></script>
-
-<!-- 2) Lógica de registro -->
-<script type="module">
-import { auth } from './firebase-init.js?v=8';
-import {
-  createUserWithEmailAndPassword,
-  updateProfile,
-  sendEmailVerification
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-const $ = (s) => document.querySelector(s);
-const form   = $('#register-form');
-const status = $('#status');
-const btn    = $('#submit');
-
-function show(msg){ status.textContent = msg; status.style.display='block'; }
-function clear(){ status.style.display='none'; status.textContent=''; }
-
-// 🚨 Si firebase-init.js no cargó, avisa
-if (!window.__FIREBASE_READY__) {
-  show('No se pudo cargar Firebase. Revisa la ruta de "firebase-init.js".');
-  console.error('firebase-init.js NO cargó');
-}
-
-form.addEventListener('submit', async () => {
-  clear();
-
-  const name  = (form.name?.value || '').trim();
-  const email = form.email?.value?.trim();
-  const pass  = form.password?.value;
-  const pass2 = form.password2?.value;
-  const terms = form.terms?.checked;
-
-  if (!email || !pass || !pass2) return show('Completa todos los campos.');
-  if (!terms) return show('Acepta los términos y condiciones.');
-  if (pass !== pass2) return show('Las contraseñas no coinciden.');
-
-  btn.disabled = true; btn.textContent = 'Registrando…'; show('Creando cuenta…');
-
-  try {
-    const { user } = await createUserWithEmailAndPassword(auth, email, pass);
-    if (name) await updateProfile(user, { displayName: name });
-
-    // Enviar verificación
-    await sendEmailVerification(user, {
-      url: 'https://abohorqr-dot.github.io/hoteleaseali/docs/login.html'
+  <script>
+    // Captura errores JS en pantalla
+    window.addEventListener('error', e => {
+      const el = document.getElementById('error');
+      el.textContent = 'JS error: ' + (e.message || e.error);
+      el.style.display = 'block';
     });
 
-    show('¡Listo! Te enviamos un correo para verificar tu email.');
-    alert('Te enviamos un correo de verificación. Abre el enlace y luego inicia sesión.');
-    location.href = './login.html';
-  } catch (err) {
-    console.error('REGISTER ERROR:', err);
-    const map = {
-      'auth/email-already-in-use': 'Ese correo ya está registrado.',
-      'auth/invalid-email': 'Correo inválido.',
-      'auth/weak-password': 'La contraseña es muy corta (mín. 6).',
-      'auth/network-request-failed': 'Sin conexión. Revisa tu red.'
-    };
-    show(map[err.code] || err.message);
-    alert(map[err.code] || err.message);
-  } finally {
-    btn.disabled = false; btn.textContent = 'Registrarme';
-  }
-});
-</script>
- <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="./firebase-init.js"></script>
+    const $ = (id) => document.getElementById(id);
+    const info = $('info');
+    const error = $('error');
+    function show(el, msg){ el.textContent = msg; el.style.display = 'block'; }
+    function hide(el){ el.style.display = 'none'; }
 
+    // Verifica que Firebase cargó
+    if (!window.firebase) {
+      show(error, 'Firebase NO cargó. Revisa el orden de scripts.');
+    } else {
+      console.log('Firebase SDK:', firebase.SDK_VERSION);
+    }
+
+    $('regForm').addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      hide(error); hide(info);
+
+      try {
+        const name = $('name').value.trim();
+        const email = $('email').value.trim();
+        const pass = $('password').value;
+        const confirm = $('confirm').value;
+        if (pass !== confirm) throw {message:'Las contraseñas no coinciden.'};
+
+        // Registro
+        const cred = await firebase.auth().createUserWithEmailAndPassword(email, pass);
+        if (name) await cred.user.updateProfile({ displayName: name });
+        await cred.user.sendEmailVerification();
+
+        show(info, 'Registro OK. Te enviamos verificación. Irás al login…');
+        setTimeout(() => location.href = 'login.html?msg=registered', 1200);
+      } catch(e) {
+        const code = e?.code || '';
+        let msg = e?.message || 'Error inesperado.';
+        if (code.includes('auth/email-already-in-use')) msg = 'Ese correo ya está en uso.';
+        if (code.includes('auth/invalid-email')) msg = 'Correo inválido.';
+        if (code.includes('auth/weak-password')) msg = 'Contraseña muy corta (mínimo 6).';
+        if (code.includes('auth/operation-not-allowed')) msg = 'Habilita Email/Password en Firebase.';
+        if (code.includes('auth/network-request-failed')) msg = 'Sin conexión. Revisa tu internet.';
+        show(error, msg);
+        console.error(e);
+      }
+    });
+  </script>
 </body>
 </html>
