@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hoteleaseali · Pagos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../img/logo.png">
+</head>
+
+<body>
+    <header>
+        <div class="container header-inner">
+            <a class="brand" href="../index.html"><img src="../img/logo.png" alt="">Hoteleaseali</a>
+            <nav class="nav">
+                <a href="./login.html">Login</a>
+                <a href="./registro.html">Registro</a>
+                <a href="./panel.html">Panel</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding:32px 0">
+        <div class="card stack">
+            <h1>Pagos</h1>
+            <p class="lead">Integración con pasarelas y emisión de comprobantes.</p>
+            <ul>
+                <li>Pasarela A/B/C (tarjeta, QR, transferencia).</li>
+                <li>Generación de recibos y comprobantes (PDF).</li>
+                <li>Reembolsos y conciliación.</li>
+                <li>Reporte de ingresos por período.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer><small>© 2025 Hoteleaseali</small></footer>
+    <script type="module" src="./firebase-init.js"></script>
+    <!-- (Opcional) proteger si quieres solo usuarios logueados
+<script type="module">
+import {auth} from "./firebase-init.js";
+import {onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+onAuthStateChanged(auth, u => { if(!u) location.href="./login.html"; });
+</script>
+-->
+</body>
+
+</html>
