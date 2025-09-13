@@ -19,7 +19,11 @@
     <h1>Crear cuenta</h1>
     <p class="lead">Regístrate con tu correo electrónico.</p>
 
-    <form id="register-form" class="form-row" style="margin-top:12px">
+    <!-- Mensajes -->
+    <div id="status" style="display:none;margin:8px 0;padding:10px;border-radius:10px;background:#fffbe6;border:1px solid #f3d08b;color:#7a5900"></div>
+
+    <!-- 👇 evita recarga incluso si el JS falla -->
+    <form id="register-form" action="javascript:void(0)" novalidate class="form-row" style="margin-top:12px">
       <label>Nombre (opcional)
         <input name="name" type="text" placeholder="Tu nombre">
       </label>
@@ -33,12 +37,12 @@
         <input name="password2" type="password" minlength="6" placeholder="Repite la contraseña" required>
       </label>
 
-      <label style="display:flex;gap:8px;align-items:flex-start;margin-top:4px">
+      <label style="display:flex;gap:8px;align-items:flex-start;margin-top:6px">
         <input name="terms" type="checkbox" required>
         <span>Acepto los términos y condiciones</span>
       </label>
 
-      <button class="btn" type="submit" style="margin-top:8px">Registrarme</button>
+      <button id="submit" class="btn" type="submit" style="margin-top:8px">Registrarme</button>
       <p style="margin-top:10px">¿Ya tienes cuenta? <a class="module-link" href="./login.html">Inicia sesión</a></p>
     </form>
   </div>
@@ -46,40 +50,73 @@
 
 <footer><small>© 2025 Hoteleaseali</small></footer>
 
-<script type="module" src="./firebase-init.js"></script>
+<!-- 1) Carga Firebase -->
+<script type="module" src="./firebase-init.js?v=8"></script>
+
+<!-- 2) Lógica de registro -->
 <script type="module">
-import { auth } from './firebase-init.js';
-import { createUserWithEmailAndPassword, updateProfile }
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { auth } from './firebase-init.js?v=8';
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const $ = (s) => document.querySelector(s);
-const form = $('#register-form');
+const form   = $('#register-form');
+const status = $('#status');
+const btn    = $('#submit');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const name = (form.name.value || '').trim();
-  const email = form.email.value.trim();
-  const pass  = form.password.value;
-  const pass2 = form.password2.value;
-  const terms = form.terms.checked;
+function show(msg){ status.textContent = msg; status.style.display='block'; }
+function clear(){ status.style.display='none'; status.textContent=''; }
 
-  if (!terms) return alert('Acepta los términos y condiciones.');
-  if (pass !== pass2) return alert('Las contraseñas no coinciden.');
+// 🚨 Si firebase-init.js no cargó, avisa
+if (!window.__FIREBASE_READY__) {
+  show('No se pudo cargar Firebase. Revisa la ruta de "firebase-init.js".');
+  console.error('firebase-init.js NO cargó');
+}
+
+form.addEventListener('submit', async () => {
+  clear();
+
+  const name  = (form.name?.value || '').trim();
+  const email = form.email?.value?.trim();
+  const pass  = form.password?.value;
+  const pass2 = form.password2?.value;
+  const terms = form.terms?.checked;
+
+  if (!email || !pass || !pass2) return show('Completa todos los campos.');
+  if (!terms) return show('Acepta los términos y condiciones.');
+  if (pass !== pass2) return show('Las contraseñas no coinciden.');
+
+  btn.disabled = true; btn.textContent = 'Registrando…'; show('Creando cuenta…');
 
   try {
     const { user } = await createUserWithEmailAndPassword(auth, email, pass);
     if (name) await updateProfile(user, { displayName: name });
-    location.href = './panel.html';
+
+    // Enviar verificación
+    await sendEmailVerification(user, {
+      url: 'https://abohorqr-dot.github.io/hoteleaseali/docs/login.html'
+    });
+
+    show('¡Listo! Te enviamos un correo para verificar tu email.');
+    alert('Te enviamos un correo de verificación. Abre el enlace y luego inicia sesión.');
+    location.href = './login.html';
   } catch (err) {
-    const msgs = {
+    console.error('REGISTER ERROR:', err);
+    const map = {
       'auth/email-already-in-use': 'Ese correo ya está registrado.',
       'auth/invalid-email': 'Correo inválido.',
-      'auth/weak-password': 'La contraseña es muy corta.'
+      'auth/weak-password': 'La contraseña es muy corta (mín. 6).',
+      'auth/network-request-failed': 'Sin conexión. Revisa tu red.'
     };
-    alert(msgs[err.code] || err.message);
+    show(map[err.code] || err.message);
+    alert(map[err.code] || err.message);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Registrarme';
   }
 });
 </script>
-  <script type="module" src="./firebase-init.js"></script>
 </body>
 </html>
