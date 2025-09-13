@@ -1,1 +1,141 @@
+<!doctype html>
+<html lang="es">
 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hoteleaseali · Iniciar sesión</title>
+
+    <!-- ✅ CSS: carpeta /css al nivel superior de /docs -->
+        <link rel="stylesheet" href="../css/style.css?v=4">
+
+
+    <link rel="icon" href="../img/logo.png" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a class="brand" href="../index.html">
+                <img src="../img/logo.png" alt="Hoteleaseali" style="height:36px;border-radius:8px" />
+                Hoteleaseali
+            </a>
+            <nav class="nav">
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../index.html#docs">Docs</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login -->
+    <main class="container" style="padding:32px 0">
+        <div class="card" style="max-width:440px;margin:auto">
+            <h1 style="margin-bottom:.5rem">Iniciar sesión</h1>
+            <p class="lead" style="color:var(--muted)">Accede con tu correo y contraseña.</p>
+
+            <form id="loginForm" class="stack" novalidate>
+                <div class="form-row">
+                    <label for="email">Correo</label>
+                    <input id="email" type="email" placeholder="usuario@hotel.com" required />
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Contraseña</label>
+                    <input id="password" type="password" placeholder="••••••••" minlength="8" required />
+                </div>
+
+                <div class="form-row" style="display:flex;justify-content:space-between;align-items:center">
+                    <label style="display:flex;gap:.5rem;align-items:center">
+                        <input id="remember" type="checkbox" /> Recordarme
+                    </label>
+                    <a id="resetLink" class="module-link" href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button id="btnLogin" type="submit">Ingresar</button>
+                <p id="msg" class="input-help" style="margin-top:.5rem"></p>
+            </form>
+
+            <p class="input-help" style="margin-top:10px">
+                ¿No tienes cuenta? <a class="module-link" href="./registro.html">Regístrate</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <small>© 2025 Hoteleaseali</small>
+    </footer>
+
+    <!-- Inicializa Firebase (tu archivo con la config) -->
+    <script type="module" src="./firebase-init.js"></script>
+
+    <!-- Lógica de autenticación -->
+    <script type="module">
+        import { auth } from "./firebase-init.js";
+        import {
+            setPersistence, browserLocalPersistence, browserSessionPersistence,
+            onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+        // Si ya hay sesión, ir al panel
+        onAuthStateChanged(auth, (user) => {
+            if (user) window.location.href = "./panel.html";
+        });
+
+        const remember = document.getElementById("remember");
+        const form = document.getElementById("loginForm");
+        const msg = document.getElementById("msg");
+        const btn = document.getElementById("btnLogin");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            msg.textContent = "Verificando…";
+            msg.style.color = "var(--muted)";
+            btn.disabled = true;
+
+            try {
+                await setPersistence(auth, remember.checked ? browserLocalPersistence : browserSessionPersistence);
+
+                const email = /** @type {HTMLInputElement} */(document.getElementById("email")).value.trim();
+                const pass = /** @type {HTMLInputElement} */(document.getElementById("password")).value;
+
+                await signInWithEmailAndPassword(auth, email, pass);
+
+                msg.textContent = "Inicio de sesión exitoso. Redirigiendo…";
+                msg.style.color = "#16a34a";
+                window.location.href = "./panel.html";
+            } catch (err) {
+                const map = {
+                    "auth/invalid-credential": "Correo o contraseña incorrectos.",
+                    "auth/invalid-email": "Correo inválido.",
+                    "auth/user-disabled": "Usuario deshabilitado.",
+                    "auth/user-not-found": "Usuario no encontrado.",
+                    "auth/wrong-password": "Contraseña incorrecta.",
+                    "auth/too-many-requests": "Demasiados intentos. Intenta más tarde."
+                };
+                msg.textContent = map[err.code] || ("Error: " + err.code);
+                msg.style.color = "#e11d48";
+            } finally {
+                btn.disabled = false;
+            }
+        });
+
+        // Restablecer contraseña
+        document.getElementById("resetLink").addEventListener("click", async (e) => {
+            e.preventDefault();
+            const emailInput = /** @type {HTMLInputElement} */(document.getElementById("email"));
+            const email = emailInput.value.trim() || prompt("Ingresa tu correo para restablecer:");
+            if (!email) return;
+
+            try {
+                await sendPasswordResetEmail(auth, email);
+                alert("Te enviamos un correo para restablecer la contraseña.");
+            } catch (err) {
+                alert("No se pudo enviar: " + err.code);
+            }
+        });
+    </script>
+</body>
+
+</html>
