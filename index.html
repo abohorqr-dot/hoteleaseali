@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recuperar contraseña — Hoteleaseali</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="container">
+            <a class="brand" href="../index.html">
+                <img src="../img/logo.png" alt="Hoteleaseali" />
+                <span>Hoteleaseali</span>
+            </a>
+            <nav class="nav">
+                <a href="#">Inicio</a>
+                <a href="#">Reservar</a>
+                <a href="#">Servicios</a>
+                <a href="#">Ayuda</a>
+            </nav>
+            <a class="btn-pill" href="../inicio_sesion/index.html">Iniciar sesión</a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <div class="container">
+            <section class="auth-card">
+                <!-- Columna izquierda -->
+                <div class="auth-left">
+                    <p class="greeting">RECUPERAR</p>
+                    <h1 class="title">¿Olvidaste tu contraseña?</h1>
+                    <p class="subtitle">Ingresa tu correo y te enviaremos un enlace para restablecerla.</p>
+
+                    <form id="recoverForm" class="form" novalidate>
+                        <label class="label" for="email">Email</label>
+                        <input class="input" id="email" type="email" placeholder="tucorreo@ejemplo.com"
+                            autocomplete="username" required />
+
+                        <button type="submit" class="cta">Enviar enlace</button>
+
+                        <div class="links" style="margin-top:10px">
+                            <a href="../inicio_sesion/index.html">Volver a iniciar sesión</a>
+                            <span>·</span>
+                            <a href="../registro/index.html">Crear cuenta</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Columna derecha (blobs + avión) -->
+                <div class="auth-right">
+                    <img src="../img/plane.png" alt="" class="plane" />
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom bar -->
+    <footer class="bottombar">
+        <a href="#"><span>🏠</span>Reservar</a>
+        <a href="#"><span>🧾</span>Reservas</a>
+        <a href="#"><span>🧰</span>Servicios</a>
+        <a href="#"><span>❓</span>Ayuda</a>
+    </footer>
+
+    <script src="./script.js" defer></script>
+</body>
+
+</html>
