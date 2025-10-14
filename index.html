@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bienvenida — Hoteleaseali</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <body class="bienvenida">
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="container">
+            <a class="brand" href="../index.html">
+                <img src="../img/logo.png" alt="Hoteleaseali" />
+                <span>Hoteleaseali</span>
+            </a>
+            <nav class="nav">
+                <a href="#">Inicio</a>
+                <a href="#">Reservar</a>
+                <a href="#">Servicios</a>
+                <a href="#">Perfil</a>
+            </nav>
+            <a class="btn-pill" href="../inicio_sesion/index.html">Empezar</a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <!-- Hero superior con imagen de fondo -->
+        <section class="hero-top" aria-hidden="true"></section>
+        <div class="container">
+
+            <!-- Welcome / Quick booking -->
+            <section class="welcome-card">
+                <div class="left">
+                    <p class="chip" id="greetchip">BUENOS DÍAS</p>
+                    <h1 class="title">Bienvenido a <span>Hoteleaseali</span> 🛎️</h1>
+                    <p class="subtitle">Reserva fácil, gestiona sin enredos y vive una experiencia cinco estrellas.</p>
+
+                    <!-- Reserva rápida -->
+                    <form id="quickForm" class="quick" novalidate>
+                        <div class="quick-row">
+                            <div class="field">
+                                <label for="dest">Destino</label>
+                                <input id="dest" class="input" type="text" placeholder="¿A dónde viajas?" />
+                            </div>
+
+                            <div class="field">
+                                <label for="inDate">Check-in</label>
+                                <input id="inDate" class="input" type="date" />
+                            </div>
+
+                            <div class="field">
+                                <label for="outDate">Check-out</label>
+                                <input id="outDate" class="input" type="date" />
+                            </div>
+
+                            <div class="field guests">
+                                <label>Huéspedes</label>
+                                <div class="stepper">
+                                    <button type="button" class="step" id="less">−</button>
+                                    <input id="guests" class="input input--ghost" type="text" value="2" readonly />
+                                    <button type="button" class="step" id="more">+</button>
+                                </div>
+                            </div>
+
+                            <button class="cta" type="submit">Reservar ahora</button>
+                        </div>
+                        <p class="fine">Consejo: consigue mejor tarifa entre semana ✨</p>
+                    </form>
+                </div>
+
+                <div class="right">
+                    <div class="blobs"></div>
+                    <img class="hero-img" src="../img/room.png" alt="" />
+                    <div class="badge">
+                        <img src="../img/key.png" alt="" />
+                        <div>
+                            <b>Check-in Express</b>
+                            <small>evita filas en recepción</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress -->
+            <section class="progress-card">
+                <div class="progress-head">
+                    <h2>Tu progreso</h2>
+                    <span class="pct" id="pct">0%</span>
+                </div>
+                <div class="bar"><span id="bar"></span></div>
+
+                <ul class="todo">
+                    <li>
+                        <label class="check">
+                            <input type="checkbox" class="stepCheck" id="stProfile" />
+                            <span><b>Completa tu perfil</b> <small>(nombre y teléfono)</small></span>
+                        </label>
+                        <a href="#" class="go">Ir</a>
+                    </li>
+                    <li>
+                        <label class="check">
+                            <input type="checkbox" class="stepCheck" id="stEmail" />
+                            <span><b>Verifica tu email</b> <small>(te enviamos un enlace)</small></span>
+                        </label>
+                        <a href="#" class="go">Enviar</a>
+                    </li>
+                    <li>
+                        <label class="check">
+                            <input type="checkbox" class="stepCheck" id="stReserve" />
+                            <span><b>Haz tu primera reserva</b> <small>(rutas y ofertas)</small></span>
+                        </label>
+                        <a href="#" class="go">Buscar</a>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Quick actions -->
+            <section class="tiles">
+                <a class="tile" href="#">
+                    <div class="ico">🛏️</div>
+                    <div>
+                        <b>Mis reservas</b>
+                        <small>Consulta, cambia o cancela</small>
+                    </div>
+                </a>
+                <a class="tile" href="#">
+                    <div class="ico">🪪</div>
+                    <div>
+                        <b>Check-in web</b>
+                        <small>Disponible 48h antes</small>
+                    </div>
+                </a>
+                <a class="tile" href="#">
+                    <div class="ico">🧰</div>
+                    <div>
+                        <b>Servicios</b>
+                        <small>Equipaje, traslados y más</small>
+                    </div>
+                </a>
+                <a class="tile" href="#">
+                    <div class="ico">🕘</div>
+                    <div>
+                        <b>Late checkout</b>
+                        <small>Sujeto a disponibilidad</small>
+                    </div>
+                </a>
+            </section>
+
+            <!-- Promos -->
+            <section class="promo">
+                <div class="promo-left">
+                    <h3>Temporada Dorada</h3>
+                    <p>Hasta <b>30% OFF</b> en destinos seleccionados · Código: <b>GOLD30</b></p>
+                </div>
+                <div class="promo-right">
+                    <label class="switch">
+                        <input type="checkbox" id="promoToggle" />
+                        <span></span>
+                    </label>
+                    <small>Recibir promos</small>
+                    <button class="btn-outline" id="applyCoupon">Aplicar cupón</button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Bottom bar -->
+    <footer class="bottombar">
+        <a href="#"><span>🏠</span>Reservar</a>
+        <a href="#"><span>🧾</span>Reservas</a>
+        <a href="#"><span>🧰</span>Servicios</a>
+        <a href="#"><span>👤</span>Perfil</a>
+    </footer>
+
+    <script src="./script.js" defer></script>
+</body>
+
+</html>
