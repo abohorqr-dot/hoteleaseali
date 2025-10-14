@@ -1,0 +1,208 @@
+:root {
+    /* Colores exactos de la referencia */
+    --deep-teal: #07383B;
+    /* fondo tarjeta */
+    --deep-teal-2: #ffffff;
+    /* fondo general */
+    --gold: #C1A85A;
+    /* inputs y bordes */
+    --gold-2: #B59849;
+    /* hover */
+    --text: #ffffff;
+    /* textos principales */
+    --muted: #c9d5d5;
+    /* textos secundarios */
+    --radius: 14px;
+    --shadow: 0 10px 26px rgba(0, 0, 0, .35);
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+    background: var(--deep-teal-2);
+    color: var(--text);
+}
+
+.wrap {
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+}
+
+.card {
+    width: min(380px, 94vw);
+    background: var(--deep-teal);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Cabecera con imagen y logo superpuesto (igual a captura) */
+.hero {
+    position: relative;
+    background: #0b0b0b;
+}
+
+.hero__img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.hero__logo {
+    position: absolute;
+    left: 14px;
+    top: 10px;
+    width: 120px;
+    /* tamaño similar al de la imagen de ejemplo */
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .35);
+}
+
+/* Contenido */
+.content {
+    padding: 18px 16px 86px;
+    /* deja espacio para el botón circular */
+}
+
+.title {
+    font-size: 26px;
+    margin: 6px 0 2px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.subtitle {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+}
+
+.field {
+    margin: 12px 0;
+}
+
+input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    outline: none;
+    background: var(--gold);
+    color: #213027;
+    font-weight: 600;
+    text-transform: lowercase;
+    /* como en la referencia */
+}
+
+input::placeholder {
+    color: #6b5a28;
+    opacity: .9;
+    font-weight: 600;
+}
+
+input:focus {
+    border-color: var(--gold-2);
+}
+
+/* Enlaces y botones */
+.link {
+    display: block;
+    width: max-content;
+    margin: 6px auto 12px;
+    color: #d9d9d9;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link--muted {
+    color: #e8e8e8;
+    text-decoration: none;
+    margin-top: 8px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 14px;
+    margin: 12px 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--gold);
+    font-weight: 800;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid var(--gold);
+}
+
+.btn:hover {
+    color: var(--gold-2);
+    border-color: var(--gold-2);
+}
+
+/* Botón circular inferior (como en la captura) */
+.fab {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    border: none;
+    background: #ffffff;
+    color: #0f172a;
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+.fab .arrow {
+    font-size: 22px;
+    line-height: 1;
+    transform: translateX(1px);
+}
+
+/* Bordes redondeados de la tarjeta (coinciden con la referencia) */
+.card {
+    border-radius: 18px;
+}
+
+.hero__img {
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+/* Logo en el panel derecho */
+.hero-logo{
+  position: absolute;
+  right: 8%;
+  top: 34%;
+  width: 140px;       /* ajusta tamaño a tu gusto: 120–200px */
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 22px rgba(0,0,0,.18));
+  display: block !important;
+  /* Si tu logo ya tiene fondo blanco, puedes quitar las 3 líneas siguientes */
+  background: #ffffff;
+  border: 1px solid #e8eef3;
+  border-radius: 12px;
+  padding: 6px;
+}
