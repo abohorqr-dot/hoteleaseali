@@ -74,3 +74,4 @@
     window.location.href = '../inicio_sesion/index.html';
   });
 })();
+
