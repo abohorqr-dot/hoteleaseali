@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inicia sesión — Hoteleaseali</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <!-- Topbar estilo Volarjet -->
+    <header class="topbar">
+        <div class="container">
+            <a class="brand" href="../index.html">
+                <img src="../img/logo.png" alt="Hoteleaseali" />
+                <span>Hoteleaseali</span>
+            </a>
+            <nav class="nav">
+                <a href="#">Inicio</a>
+                <a href="#">Ofertas</a>
+                <a href="#">Servicios</a>
+                <a href="#">Ayuda</a>
+            </nav>
+            <a class="btn-pill" href="#">Reservar</a>
+        </div>
+    </header>
+
+    <!-- Área principal -->
+    <main class="main">
+        <div class="container">
+            <section class="auth-card">
+                <div class="auth-left">
+                    <p class="greeting" id="greeting">BUENAS</p>
+                    <h1 class="title">Inicia sesión</h1>
+                    <p class="subtitle">
+                        Continúa tu compra, gestiona reservas y guarda tus datos.
+                    </p>
+
+                    <!-- Tabs -->
+                    <div class="tabs" role="tablist" aria-label="Métodos de acceso">
+                        <button class="tab is-active" role="tab" aria-selected="true" id="tab-password">Con
+                            contraseña</button>
+                        <button class="tab" role="tab" aria-selected="false" id="tab-code">Con código</button>
+                    </div>
+
+                    <!-- Form: contraseña -->
+                    <form id="formPassword" class="form" novalidate>
+                        <label class="label" for="email">Email</label>
+                        <input class="input" id="email" type="email" placeholder="tucorreo@ejemplo.com"
+                            autocomplete="username" required />
+
+                        <label class="label" for="password">Contraseña</label>
+                        <div class="input-wrap">
+                            <input class="input" id="password" type="password" placeholder="•••••••"
+                                autocomplete="current-password" required />
+                            <button type="button" class="eye" id="togglePass"
+                                aria-label="Mostrar u ocultar contraseña">👁️</button>
+                        </div>
+
+                        <label class="remember">
+                            <input type="checkbox" id="remember" />
+                            <span>Recordarme</span>
+                        </label>
+
+                        <button type="submit" class="cta">Ingresar</button>
+                        <p class="demo">
+                            Demo: si el usuario no tiene contraseña guardada, puedes usar <b>123456</b>.
+                        </p>
+                    </form>
+
+                    <!-- Form: código -->
+                    <form id="formCode" class="form is-hidden" novalidate>
+                        <label class="label" for="email2">Email</label>
+                        <input class="input" id="email2" type="email" placeholder="tucorreo@ejemplo.com" required />
+
+                        <label class="label" for="code">Código de acceso</label>
+                        <div class="code-row">
+                            <input class="input code" id="code" type="text" inputmode="numeric" maxlength="6"
+                                placeholder="######" required />
+                            <button type="button" class="btn-outline" id="sendCode">Enviar código</button>
+                        </div>
+
+                        <button type="submit" class="cta">Ingresar</button>
+                    </form>
+
+                    <div class="links">
+                        <a href="../recuperar_contrasena/index.html">¿Olvidaste tu contraseña?</a>
+                        <span>·</span>
+                        <a href="../registro/index.html">Crear cuenta</a>
+                    </div>
+                </div>
+
+                <!-- Panel derecho con blobs y avión -->
+                <div class="auth-right">
+                    <img src="../img/plane.png" alt="" class="plane" />
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom nav (mobile) -->
+    <footer class="bottombar">
+        <a href="#"><span>🏠</span>Reservar</a>
+        <a href="#"><span>🧳</span>Reservas</a>
+        <a href="#"><span>🎁</span>Servicios</a>
+        <a href="#"><span>❓</span>Ayuda</a>
+    </footer>
+
+    <script src="./script.js" defer></script>
+</body>
+
+</html>
