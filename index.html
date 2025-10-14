@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inicio de sesión — Hotel Ese Ali</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <main class="wrap">
+        <section class="card">
+            <!-- Cabecera con imagen y logo superpuesto (como la captura) -->
+            <div class="hero">
+                <img src="../img/hero.jpg" alt="Hotel Ese Ali" class="hero__img" />
+            </div>
+
+            <!-- Contenido -->
+            <div class="content">
+                <h1 class="title">Bienvenido</h1>
+                <p class="subtitle">Inicia sesión para continuar</p>
+
+                <form id="loginForm" novalidate>
+                    <div class="field">
+                        <input type="email" id="email" placeholder="correo electrónico" autocomplete="username"
+                            required />
+                    </div>
+                    <div class="field">
+                        <input type="password" id="password" placeholder="contraseña" autocomplete="current-password"
+                            required />
+                    </div>
+
+                    <a href="#" id="forgotLink" class="link">Olvidé mi Contraseña</a>
+
+                    <button type="submit" class="btn btn--outline">INICIAR SESIÓN</button>
+                    <a href="../registro/index.html" class="btn btn--outline" role="button">REGISTRO</a>
+
+                    <p class="link link--muted" id="retry">Reintentar</p>
+                    <p class="link link--muted">hoteleaseli.com</p>
+                </form>
+            </div>
+
+            <!-- Botón circular con flecha al fondo -->
+            <button class="fab" id="goBtn" aria-label="Continuar">
+                <span class="arrow">→</span>
+            </button>
+        </section>
+    </main>
+
+    <script src="./script.js" defer></script>
+</body>
+
+</html>
