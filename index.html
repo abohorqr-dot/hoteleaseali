@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bienvenida — Hoteleaseali</title>
+    <title>Registro — Hoteleaseali</title>
     <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-    <body class="bienvenida">
     <!-- Topbar -->
     <header class="topbar">
         <div class="container">
@@ -21,156 +20,131 @@
                 <a href="#">Inicio</a>
                 <a href="#">Reservar</a>
                 <a href="#">Servicios</a>
-                <a href="#">Perfil</a>
+                <a href="#">Ayuda</a>
             </nav>
-            <a class="btn-pill" href="../inicio_sesion/index.html">Empezar</a>
+            <a class="btn-pill" href="../inicio_sesion/index.html">Iniciar sesión</a>
         </div>
     </header>
 
     <!-- Main -->
     <main class="main">
-        <!-- Hero superior con imagen de fondo -->
-        <section class="hero-top" aria-hidden="true"></section>
         <div class="container">
+            <section class="register-card">
+                <h1 class="title">Crea tu cuenta en Hoteleaseali</h1>
+                <p class="subtitle">Administra reservas, realiza check-in y recibe alertas 24/7.</p>
 
-            <!-- Welcome / Quick booking -->
-            <section class="welcome-card">
-                <div class="left">
-                    <p class="chip" id="greetchip">BUENOS DÍAS</p>
-                    <h1 class="title">Bienvenido a <span>Hoteleaseali</span> 🛎️</h1>
-                    <p class="subtitle">Reserva fácil, gestiona sin enredos y vive una experiencia cinco estrellas.</p>
-
-                    <!-- Reserva rápida -->
-                    <form id="quickForm" class="quick" novalidate>
-                        <div class="quick-row">
-                            <div class="field">
-                                <label for="dest">Destino</label>
-                                <input id="dest" class="input" type="text" placeholder="¿A dónde viajas?" />
-                            </div>
-
-                            <div class="field">
-                                <label for="inDate">Check-in</label>
-                                <input id="inDate" class="input" type="date" />
-                            </div>
-
-                            <div class="field">
-                                <label for="outDate">Check-out</label>
-                                <input id="outDate" class="input" type="date" />
-                            </div>
-
-                            <div class="field guests">
-                                <label>Huéspedes</label>
-                                <div class="stepper">
-                                    <button type="button" class="step" id="less">−</button>
-                                    <input id="guests" class="input input--ghost" type="text" value="2" readonly />
-                                    <button type="button" class="step" id="more">+</button>
-                                </div>
-                            </div>
-
-                            <button class="cta" type="submit">Reservar ahora</button>
+                <form id="registerForm" class="form" novalidate>
+                    <div class="grid">
+                        <div class="col">
+                            <label class="label" for="firstName">Nombres</label>
+                            <input id="firstName" class="input" type="text" placeholder="Juan Camilo" required />
                         </div>
-                        <p class="fine">Consejo: consigue mejor tarifa entre semana ✨</p>
-                    </form>
-                </div>
 
-                <div class="right">
-                    <div class="blobs"></div>
-                    <img class="hero-img" src="../img/room.png" alt="" />
-                    <div class="badge">
-                        <img src="../img/key.png" alt="" />
-                        <div>
-                            <b>Check-in Express</b>
-                            <small>evita filas en recepción</small>
+                        <div class="col">
+                            <label class="label" for="lastName">Apellidos</label>
+                            <input id="lastName" class="input" type="text" placeholder="Pérez Gómez" required />
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="docType">Tipo de documento</label>
+                            <select id="docType" class="input select" required>
+                                <option value="CC">Cédula (CC)</option>
+                                <option value="CE">Cédula de Extranjería (CE)</option>
+                                <option value="PA">Pasaporte</option>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="docNumber">Número de documento</label>
+                            <input id="docNumber" class="input" type="text" inputmode="numeric" placeholder="1234567890"
+                                required />
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="phone">Teléfono</label>
+                            <input id="phone" class="input" type="tel" placeholder="+57 300 123 4567" />
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="email">Email</label>
+                            <input id="email" class="input" type="email" placeholder="tucorreo@ejemplo.com"
+                                autocomplete="username" required />
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="password">Contraseña</label>
+                            <div class="input-wrap">
+                                <input id="password" class="input" type="password" placeholder="Mínimo 8 caracteres"
+                                    autocomplete="new-password" required />
+                                <button type="button" class="eye" id="togglePass"
+                                    aria-label="Mostrar u ocultar contraseña">👁️</button>
+                            </div>
+                            <div class="strength">
+                                <span class="bar"><span id="strengthBar"></span></span>
+                                <span id="strengthText">Fuerza: —</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="confirm">Confirmar contraseña</label>
+                            <div class="input-wrap">
+                                <input id="confirm" class="input" type="password" placeholder="Repite tu contraseña"
+                                    required />
+                                <button type="button" class="eye" id="toggleConfirm"
+                                    aria-label="Mostrar u ocultar confirmación">👁️</button>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="country">País</label>
+                            <select id="country" class="input select">
+                                <option value="CO" selected>Colombia</option>
+                                <option value="MX">México</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CL">Chile</option>
+                                <option value="PE">Perú</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="ES">España</option>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="birth">Fecha de nacimiento</label>
+                            <input id="birth" class="input" type="date" />
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="role">Rol</label>
+                            <select id="role" class="input select" required>
+                                <option value="cliente" selected>Cliente</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label class="label" for="status">Estado</label>
+                            <select id="status" class="input select" required>
+                                <option value="activo" selected>Activo</option>
+                                <option value="inactivo">Inactivo</option>
+                            </select>
+                        </div>
+
+                        <div class="col col--full terms">
+                            <label class="check">
+                                <input id="terms" type="checkbox" />
+                                <span>Acepto los <a href="#" target="_blank" rel="noopener">Términos</a> y la <a
+                                        href="#" target="_blank" rel="noopener">Política de privacidad</a>.</span>
+                            </label>
                         </div>
                     </div>
-                </div>
+
+                    <button type="submit" class="cta">Crear cuenta</button>
+                </form>
             </section>
-
-            <!-- Progress -->
-            <section class="progress-card">
-                <div class="progress-head">
-                    <h2>Tu progreso</h2>
-                    <span class="pct" id="pct">0%</span>
-                </div>
-                <div class="bar"><span id="bar"></span></div>
-
-                <ul class="todo">
-                    <li>
-                        <label class="check">
-                            <input type="checkbox" class="stepCheck" id="stProfile" />
-                            <span><b>Completa tu perfil</b> <small>(nombre y teléfono)</small></span>
-                        </label>
-                        <a href="#" class="go">Ir</a>
-                    </li>
-                    <li>
-                        <label class="check">
-                            <input type="checkbox" class="stepCheck" id="stEmail" />
-                            <span><b>Verifica tu email</b> <small>(te enviamos un enlace)</small></span>
-                        </label>
-                        <a href="#" class="go">Enviar</a>
-                    </li>
-                    <li>
-                        <label class="check">
-                            <input type="checkbox" class="stepCheck" id="stReserve" />
-                            <span><b>Haz tu primera reserva</b> <small>(rutas y ofertas)</small></span>
-                        </label>
-                        <a href="#" class="go">Buscar</a>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Quick actions -->
-            <section class="tiles">
-                <a class="tile" href="#">
-                    <div class="ico">🛏️</div>
-                    <div>
-                        <b>Mis reservas</b>
-                        <small>Consulta, cambia o cancela</small>
-                    </div>
-                </a>
-                <a class="tile" href="#">
-                    <div class="ico">🪪</div>
-                    <div>
-                        <b>Check-in web</b>
-                        <small>Disponible 48h antes</small>
-                    </div>
-                </a>
-                <a class="tile" href="#">
-                    <div class="ico">🧰</div>
-                    <div>
-                        <b>Servicios</b>
-                        <small>Equipaje, traslados y más</small>
-                    </div>
-                </a>
-                <a class="tile" href="#">
-                    <div class="ico">🕘</div>
-                    <div>
-                        <b>Late checkout</b>
-                        <small>Sujeto a disponibilidad</small>
-                    </div>
-                </a>
-            </section>
-
-            <!-- Promos -->
-            <section class="promo">
-                <div class="promo-left">
-                    <h3>Temporada Dorada</h3>
-                    <p>Hasta <b>30% OFF</b> en destinos seleccionados · Código: <b>GOLD30</b></p>
-                </div>
-                <div class="promo-right">
-                    <label class="switch">
-                        <input type="checkbox" id="promoToggle" />
-                        <span></span>
-                    </label>
-                    <small>Recibir promos</small>
-                    <button class="btn-outline" id="applyCoupon">Aplicar cupón</button>
-                </div>
-            </section>
-
         </div>
     </main>
 
-    <!-- Bottom bar -->
+    <!-- Bottom bar (mobile) -->
     <footer class="bottombar">
         <a href="#"><span>🏠</span>Reservar</a>
         <a href="#"><span>🧾</span>Reservas</a>
